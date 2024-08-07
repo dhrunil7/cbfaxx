@@ -14,12 +14,12 @@ def _plot_halfspace_lessthan(normal_vector, constant, xlim=(-10, 10), ylim=(-10,
     X, Y = np.meshgrid(x, y)
 
     # Calculate the values of the halfspace
-    Z = a * X + b * Y
+    Z = a * X + b * Y + c
 
     # Plot the halfspace
     # plt.contourf(X, Y, Z <= c, alpha=0.5, colors=['#ff9999', '#9999ff'])
-    plt.contourf(X, Y, Z <= c, alpha=0.5, colors=['#ffb09c', '#E0FFD2'])
-    plt.contour(X, Y, Z, levels=[c], colors='black', linestyles=linestyle)
+    plt.contourf(X, Y, Z <= 0, alpha=0.5, colors=['#ffb09c', '#E0FFD2'])
+    plt.contour(X, Y, Z, levels=[0], colors='black', linestyles=linestyle)
 
     # Set the limits and labels
     plt.xlim(xlim)
