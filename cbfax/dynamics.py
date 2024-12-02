@@ -161,3 +161,20 @@ class RelativeDynamicallyExtendedUnicycle(Dynamics):
                           om2 - om1,
                           a1,
                           a2])
+
+
+class BimodalHumanDynamics(Dynamics):
+    state_dim: int = 2  # Example for 2D dynamics
+    control_dim: int = 1
+
+    def __init__(self, state_dim, control_dim, noise_std=0.1):
+        self.state_dim = state_dim
+        self.control_dim = control_dim
+        self.noise_std = noise_std
+
+    def ode_dynamics(self, state, control, t):
+        # Define bimodal dynamics
+        mode = jnp.sign(jnp.sin(t))  # Example of mode switching
+        base_motion = mode * state + control
+        noise = jax.random.normal(jax.random.PRNGKey(int(t * 1e6)), state.shape) * self.noise_std
+        return base_motion + noise
