@@ -165,7 +165,7 @@ class RelativeDynamicallyExtendedUnicycle(Dynamics):
 
 class BimodalHumanDynamics(Dynamics):
     state_dim: int = 2  # Example for 2D dynamics
-    control_dim: int = 1
+    control_dim: int = 2
 
     def __init__(self, state_dim, control_dim, noise_std=0.1):
         self.state_dim = state_dim
